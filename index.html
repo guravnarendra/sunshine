@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunshine Beach Resort — Sand, Sea & Serenity | Tondavali, Sindhudurg</title>
+  <meta name="description" content="Experience luxury beachside living at Sunshine Beach Resort, Tondavali. Stunning ocean views, authentic Konkani cuisine, water sports & serene beach access. Book now!">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- GSAP + ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">
+      <img src="assets/images/logo/logo.png" alt="Sunshine Resort" class="logo-img">
+    </a>
+    <a href="#booking" class="nav-cta">Book Now</a>
+  </nav>
+
+  <!-- ═══════════ HERO — GSAP Scroll-Scrub Canvas ═══════════ -->
+  <div class="hero-scroll-container" id="heroScrollContainer">
+    <div class="hero-sticky">
+      <canvas class="hero-canvas" id="heroCanvas"></canvas>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>A Symphony of <span>Sand, Sea</span> & Serenity</h1>
+        <p>Nestled along the pristine Konkan coastline, discover where every wave whispers luxury and every moment becomes a cherished memory.</p>
+        <div class="hero-buttons">
+          <a href="#booking" class="btn-primary">Reserve Your Stay</a>
+          <a href="#rooms" class="btn-secondary">Explore Rooms</a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PHOTO GALLERY MARQUEE ═══════════ -->
+  <section class="section gallery" id="gallery" style="padding: 60px 0;">
+    <div class="section-header reveal" style="padding: 0 5%;">
+      <span class="section-label">Our Resort</span>
+      <h2 class="section-title">A Glimpse of Paradise</h2>
+    </div>
+    <div class="gallery-track">
+      <img src="assets/images/gallery/gallery-1.jpg" alt="Beach sunset">
+      <img src="assets/images/gallery/gallery-2.jpg" alt="Resort evening lights">
+      <img src="assets/images/gallery/gallery-3.jpg" alt="Sunset sky">
+      <img src="assets/images/gallery/gallery-4.jpg" alt="Beach sunset view">
+      <img src="assets/images/gallery/gallery-5.jpg" alt="Heart light sunset">
+      <img src="assets/images/gallery/gallery-6.jpg" alt="Beach trees">
+      <img src="assets/images/gallery/gallery-7.jpg" alt="Sunset heart">
+      <img src="assets/images/gallery/gallery-8.jpg" alt="Golden heart sunset">
+      <img src="assets/images/gallery/gallery-9.jpg" alt="Beach panorama">
+      <!-- Duplicate for infinite scroll -->
+      <img src="assets/images/gallery/gallery-1.jpg" alt="Beach sunset">
+      <img src="assets/images/gallery/gallery-2.jpg" alt="Resort evening lights">
+      <img src="assets/images/gallery/gallery-3.jpg" alt="Sunset sky">
+      <img src="assets/images/gallery/gallery-4.jpg" alt="Beach sunset view">
+      <img src="assets/images/gallery/gallery-5.jpg" alt="Heart light sunset">
+      <img src="assets/images/gallery/gallery-6.jpg" alt="Beach trees">
+      <img src="assets/images/gallery/gallery-7.jpg" alt="Sunset heart">
+      <img src="assets/images/gallery/gallery-8.jpg" alt="Golden heart sunset">
+      <img src="assets/images/gallery/gallery-9.jpg" alt="Beach panorama">
+    </div>
+  </section>
+
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <section class="section about" id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="assets/images/about.jpg" alt="Sunshine Beach Resort — beach with colorful lighting">
+        <div class="about-image-badge">
+          <div class="badge-num">4★</div>
+          <div class="badge-text">Rated Experience</div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <span class="section-label">Welcome to Paradise</span>
+        <h2>Your Beachside Sanctuary Awaits</h2>
+        <p>Welcome to Sunshine Beach Resort, where every wave whispers luxury and every moment becomes a cherished memory. Nestled along the pristine coastline, our resort offers the perfect blend of natural beauty, modern comfort, and warm hospitality.</p>
+        <p>Whether you're planning a romantic escape, a family holiday, or a peaceful retreat, our elegant accommodations, stunning ocean views, and serene surroundings provide the perfect setting to relax and reconnect.</p>
+        <div class="about-features">
+          <div class="about-feature"><span class="feat-icon">🏖️</span><span class="feat-text">Direct Beach Access</span></div>
+          <div class="about-feature"><span class="feat-icon">🍽️</span><span class="feat-text">Homemade Konkani Food</span></div>
+          <div class="about-feature"><span class="feat-icon">🌊</span><span class="feat-text">Ocean View Rooms</span></div>
+          <div class="about-feature"><span class="feat-icon">📶</span><span class="feat-text">Free Wi-Fi</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ROOMS ═══════════ -->
+  <section class="section rooms" id="rooms">
+    <div class="section-header reveal">
+      <span class="section-label">Accommodations</span>
+      <h2 class="section-title">Choose Your Perfect Stay</h2>
+      <p class="section-subtitle">Each room is thoughtfully designed to provide comfort, space, and breathtaking views of the ocean.</p>
+    </div>
+    <div class="rooms-grid">
+      <!-- Deluxe Ocean View — AC room with blue walls -->
+      <div class="room-card reveal">
+        <div class="room-card-img">
+          <img src="assets/images/rooms/deluxe-ocean-view.jpg" alt="Deluxe Ocean View Room with AC">
+          <span class="room-card-tag">Premium</span>
+        </div>
+        <div class="room-card-body">
+          <h3>Deluxe Ocean View Room</h3>
+          <p>Offers stunning ocean views and modern comforts for an unforgettable stay.</p>
+          <div class="room-price">
+            <span class="price">₹2,500</span>
+            <span class="per">/ night (AC)</span>
+          </div>
+          <div class="room-amenities">
+            <span>🌬️ AC</span><span>📶 Wi-Fi</span><span>🛏️ King Bed</span><span>🌊 Ocean View</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sea Breeze — room with ocean window view -->
+      <div class="room-card reveal">
+        <div class="room-card-img">
+          <img src="assets/images/rooms/sea-breeze.jpg" alt="Sea Breeze Room with window view">
+          <span class="room-card-tag">Popular</span>
+        </div>
+        <div class="room-card-body">
+          <h3>Sea Breeze Room</h3>
+          <p>Designed for a peaceful and refreshing stay with soothing coastal breezes.</p>
+          <div class="room-price">
+            <span class="price">₹1,600</span>
+            <span class="per">/ night (Non-AC)</span>
+          </div>
+          <div class="room-amenities">
+            <span>📶 Wi-Fi</span><span>🛏️ Queen Bed</span><span>🚿 Hot Water</span>
+          </div>
+        </div>
+      </div>
+      <!-- Family Suite — spacious hall room -->
+      <div class="room-card reveal">
+        <div class="room-card-img">
+          <img src="assets/images/rooms/family-suite.jpg" alt="Family Beach Suite Hall">
+          <span class="room-card-tag">Spacious</span>
+        </div>
+        <div class="room-card-body">
+          <h3>Family &amp; Friends Beach Suite</h3>
+          <p>Spacious suite perfect for families and groups seeking togetherness.</p>
+          <div class="room-price">
+            <span class="price">₹3,000</span>
+            <span class="per">/ night (Hall — up to 8)</span>
+          </div>
+          <div class="room-amenities">
+            <span>🌬️ AC</span><span>📶 Wi-Fi</span><span>👨‍👩‍👧‍👦 8 Guests</span><span>🌊 View</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ RESORT AMENITIES ═══════════ -->
+  <section class="section amenities" id="amenities">
+    <div class="section-header reveal">
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Resort Amenities</h2>
+      <p class="section-subtitle">Everything you need for a perfect beach vacation, all under one roof.</p>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity-card reveal"><span class="amenity-icon">🏖️</span><h4>Direct Beach Access</h4></div>
+      <div class="amenity-card reveal"><span class="amenity-icon">📶</span><h4>Complimentary Wi-Fi</h4></div>
+      <div class="amenity-card reveal"><span class="amenity-icon">🍳</span><h4>Breakfast Included</h4></div>
+      <div class="amenity-card reveal"><span class="amenity-icon">🍲</span><h4>Lunch &amp; Dinner</h4></div>
+      <div class="amenity-card reveal"><span class="amenity-icon">🌊</span><h4>Ocean View Rooms</h4></div>
+      <div class="amenity-card reveal"><span class="amenity-icon">🅿️</span><h4>Free Parking</h4></div>
+      <div class="amenity-card reveal"><span class="amenity-icon">🎮</span><h4>Recreational Spaces</h4></div>
+      <div class="amenity-card reveal"><span class="amenity-icon">🍽️</span><h4>Dining Area</h4></div>
+      <div class="amenity-card reveal"><span class="amenity-icon">🚿</span><h4>Hot Water</h4></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ DINING ═══════════ -->
+  <section class="section dining" id="dining">
+    <div class="section-header reveal">
+      <span class="section-label">Culinary Journey</span>
+      <h2 class="section-title">Authentic Konkani Cuisine</h2>
+      <p class="section-subtitle">Savor homemade coastal flavors in a peaceful seaside setting with panoramic ocean views.</p>
+    </div>
+    <div class="dining-wrapper">
+      <div class="dining-images reveal">
+        <img src="assets/images/dining/konkani-thali.jpg" alt="Konkani Thali">
+        <img src="assets/images/dining/fish-curry.jpg" alt="Fish curry Thali">
+        <img src="assets/images/dining/surmai-fry.jpg" alt="Surmai fry">
+      </div>
+      <div class="dining-content reveal">
+        <h3>Our Menu</h3>
+        <div class="menu-category">
+          <h4>🍛 Main Course Thalis</h4>
+          <div class="menu-items">
+            <span>Surmai Thali</span><span>Pomfret Thali</span><span>Prawns Thali</span>
+            <span>Bangda Thali</span><span>Chicken Thali</span><span>Egg Thali</span>
+            <span>Veg Thali</span><span>Komdi Vade</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4>🌅 Breakfast</h4>
+          <div class="menu-items">
+            <span>Poha</span><span>Ghavan with Chutney</span><span>Upma</span><span>Sheera</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4>🍤 Snacks &amp; Sides</h4>
+          <div class="menu-items">
+            <span>Surmai Fry</span><span>Pomfret Fry</span><span>Prawns Fry</span>
+            <span>Chicken Masala</span><span>Prawns Masala</span><span>Kanda Bhaji</span>
+            <span>Finger Chips</span><span>Masala Papad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ACTIVITIES ═══════════ -->
+  <section class="section activities" id="activities">
+    <div class="section-header reveal">
+      <span class="section-label">Things to Do</span>
+      <h2 class="section-title">Experiences &amp; Adventures</h2>
+      <p class="section-subtitle">From serene sunrise walks to thrilling water sports, there's something for everyone.</p>
+    </div>
+    <div class="activities-grid">
+      <div class="activities-image reveal">
+        <img src="assets/images/gallery/gallery-1.jpg" alt="Sunset beach activities">
+      </div>
+      <div class="activities-list reveal">
+        <div class="activity-item"><span class="act-icon">🚶</span><span class="act-text">Beach Walks</span></div>
+        <div class="activity-item"><span class="act-icon">🌅</span><span class="act-text">Sunrise Views</span></div>
+        <div class="activity-item"><span class="act-icon">🌇</span><span class="act-text">Sunset Views</span></div>
+        <div class="activity-item"><span class="act-icon">👨‍👩‍👧‍👦</span><span class="act-text">Family Recreation</span></div>
+        <div class="activity-item"><span class="act-icon">⛵</span><span class="act-text">Boating</span></div>
+        <div class="activity-item"><span class="act-icon">🏄</span><span class="act-text">Jet Ski</span></div>
+        <div class="activity-item"><span class="act-icon">🤿</span><span class="act-text">Water Sports</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PRICING ═══════════ -->
+  <section class="section pricing" id="pricing">
+    <div class="section-header reveal">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">Transparent &amp; Simple Rates</h2>
+      <p class="section-subtitle">No hidden charges. Just honest pricing for an unforgettable experience.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <h3>Non-AC Room</h3>
+        <div class="price-amount"><span class="price-currency">₹</span>1,600</div>
+        <div class="price-unit">per night</div>
+        <ul class="price-features">
+          <li>Up to 4 guests</li>
+          <li>Free Wi-Fi</li>
+          <li>Attached Bathroom</li>
+          <li>Hot Water</li>
+        </ul>
+        <a href="#booking" class="btn-primary">Book Now</a>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-card-label">Most Popular</div>
+        <h3>AC Room</h3>
+        <div class="price-amount"><span class="price-currency">₹</span>2,500</div>
+        <div class="price-unit">per night</div>
+        <ul class="price-features">
+          <li>Up to 4 guests</li>
+          <li>Air Conditioning</li>
+          <li>Ocean View</li>
+          <li>King Size Bed</li>
+          <li>Free Wi-Fi</li>
+        </ul>
+        <a href="#booking" class="btn-primary" style="background:var(--sunset-glow)">Book Now</a>
+      </div>
+      <div class="price-card reveal">
+        <h3>Hall / Suite</h3>
+        <div class="price-amount"><span class="price-currency">₹</span>3,000</div>
+        <div class="price-unit">per night</div>
+        <ul class="price-features">
+          <li>Up to 8 guests</li>
+          <li>Spacious Layout</li>
+          <li>Ideal for Families</li>
+          <li>All Amenities</li>
+        </ul>
+        <a href="#booking" class="btn-primary">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ LOCATION ═══════════ -->
+  <section class="section location" id="location">
+    <div class="section-header reveal">
+      <span class="section-label">Find Us</span>
+      <h2 class="section-title">Our Location</h2>
+      <p class="section-subtitle">Located in the heart of Tondavali beach, surrounded by nature's finest attractions.</p>
+    </div>
+    <div class="location-grid">
+      <div class="location-map reveal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.427707471285!2d73.4540772!3d16.1241854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3beaa76529dcbeeb%3A0x32922668ba07fe43!2sSunshine+Beach+Resort!5e0!3m2!1sen!2sin!4v1718125672000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Sunshine Beach Resort Location"></iframe>
+      </div>
+      <div class="location-info reveal">
+        <h3>Getting Here</h3>
+        <p>At Post Tondavali Madhli, Taluka Malvan, District Sindhudurg — where the Konkan coast reveals its most beautiful stretch.</p>
+        <h4 style="font-family:'DM Sans',sans-serif;font-size:0.82rem;text-transform:uppercase;letter-spacing:2px;color:var(--ocean);margin-bottom:14px;font-weight:600;">Nearby Attractions</h4>
+        <div class="nearby-list">
+          <div class="nearby-item"><span class="nb-icon">🪨</span><span class="nb-text">Kavada Rock</span></div>
+          <div class="nearby-item"><span class="nb-icon">🌊</span><span class="nb-text">Shimpla Point</span></div>
+          <div class="nearby-item"><span class="nb-icon">🏞️</span><span class="nb-text">Tondavali Estuary</span></div>
+        </div>
+        <a href="https://maps.app.goo.gl/f39StHTiVGMEgdhb7" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;">📍 Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ BOOKING / CONTACT ═══════════ -->
+  <section class="section booking" id="booking">
+    <div class="section-header reveal">
+      <span class="section-label">Reserve Your Stay</span>
+      <h2 class="section-title">Book Your Getaway</h2>
+      <p class="section-subtitle">Reach us via phone or WhatsApp. An advance payment of ₹1,000 confirms your reservation.</p>
+    </div>
+    <div class="booking-info reveal">
+      <div class="booking-details">
+        <div class="booking-detail">
+          <span class="bd-icon">🕐</span>
+          <h4>Check-in</h4>
+          <p>11:00 AM</p>
+        </div>
+        <div class="booking-detail">
+          <span class="bd-icon">🕙</span>
+          <h4>Check-out</h4>
+          <p>10:00 AM</p>
+        </div>
+        <div class="booking-detail">
+          <span class="bd-icon">💳</span>
+          <h4>Payment</h4>
+          <p>Cash · UPI · GPay · PhonePe</p>
+        </div>
+      </div>
+      <div class="booking-contacts">
+        <a href="tel:+917517265059" class="booking-contact-btn">📞 Babu Patil — 7517265059</a>
+        <a href="tel:+919021088623" class="booking-contact-btn">📞 Rohit — 9021088623</a>
+        <a href="https://wa.me/918275316235" target="_blank" class="booking-contact-btn whatsapp">💬 WhatsApp — Babu Patil</a>
+        <a href="https://wa.me/919420195381" target="_blank" class="booking-contact-btn whatsapp">💬 WhatsApp — Sanika Patil</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer" id="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>☀ Sunshine Beach Resort</h3>
+        <p>A Symphony of Sand, Sea, and Serenity. At Post Tondavali Madhli, Taluka Malvan, District Sindhudurg.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#dining">Dining</a></li>
+          <li><a href="#activities">Activities</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#booking">Check-in: 11 AM</a></li>
+          <li><a href="#booking">Check-out: 10 AM</a></li>
+          <li><a href="#booking">Valid ID Required</a></li>
+          <li><a href="#booking">₹1,000 Advance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="https://instagram.com/sun_shine_beach_resort" target="_blank">📸 @sun_shine_beach_resort</a></li>
+          <li><a href="tel:+917517265059">📞 7517265059</a></li>
+          <li><a href="https://wa.me/918275316235" target="_blank">💬 WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Sunshine Beach Resort. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

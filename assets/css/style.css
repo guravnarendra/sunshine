@@ -1646,15 +1646,23 @@ body.dark-mode .theme-toggle .moon {
 
 .advance-note {
   margin-top: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  text-align: center;
   font-size: 0.95rem;
   color: var(--text-light);
+  line-height: 1.8;
+}
+
+.advance-note svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+  margin-top: -3px;
 }
 
 .advance-badge {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 6px;
   background: rgba(232, 115, 74, 0.15);
   color: var(--sunset);
   font-size: 0.9rem;

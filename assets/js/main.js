@@ -54,30 +54,62 @@
     ctx.drawImage(img, sx, sy, sw, sh);
   }
 
-  // Preload all frames with decode API for zero-jank rendering
+  // Preload all frames robustly using fetch to prevent browser cancellation
   function preloadFrames() {
     const promises = frameIndices.map((frameNum, i) => {
       return new Promise((resolve) => {
         const img = new Image();
-        img.src = framePath(frameNum);
-        img.onload = () => {
-          loadedCount++;
-          if (loadedCount === 1) resizeCanvas(); // show first frame ASAP
-          // Use decode() if available for smoother rendering
-          if (img.decode) {
-            img.decode().then(resolve).catch(resolve);
-          } else {
-            resolve();
-          }
-        };
-        img.onerror = resolve;
         images[i] = img;
+
+        const loadImg = () => {
+          fetch(framePath(frameNum))
+            .then(res => {
+              if (!res.ok) throw new Error("Network error");
+              return res.blob();
+            })
+            .then(blob => {
+              img.onload = () => {
+                loadedCount++;
+                if (loadedCount === 1) resizeCanvas(); // show first frame ASAP
+                if (img.decode) {
+                  img.decode().then(resolve).catch(() => setTimeout(loadImg, 500));
+                } else {
+                  resolve();
+                }
+              };
+              img.onerror = () => setTimeout(loadImg, 500);
+              img.src = URL.createObjectURL(blob);
+            })
+            .catch(() => {
+              setTimeout(loadImg, 500);
+            });
+        };
+
+        loadImg();
       });
     });
 
     Promise.all(promises).then(() => {
       allLoaded = true;
+      resizeCanvas(); // Force re-render of current scroll position frame
+      checkAndHideLoader();
     });
+  }
+
+  let windowLoaded = false;
+  window.addEventListener('load', () => {
+    windowLoaded = true;
+    checkAndHideLoader();
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
+  });
+
+  function checkAndHideLoader() {
+    if (windowLoaded && allLoaded) {
+      const loader = document.getElementById('siteLoader');
+      if (loader) loader.classList.add('hidden');
+    }
   }
 
   preloadFrames();
@@ -94,13 +126,12 @@
 
     gsap.to(currentFrame, {
       index: frameCount - 1,
-      snap: 'index',
       ease: 'none',
       scrollTrigger: {
         trigger: container,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1.2, // higher = smoother (less jitter)
+        scrub: 1, 
       },
       onUpdate: () => {
         const idx = Math.round(currentFrame.index);
@@ -166,3 +197,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+// ─── Set dynamic copyright year ───
+const currentYearEl = document.getElementById('currentYear');
+if (currentYearEl) {
+  currentYearEl.textContent = new Date().getFullYear();
+}
+
+// ─── Theme Toggle (Dark/Light Mode) ───
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  const body = document.body;
+
+  // Check local storage for theme preference, or system preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    body.classList.add('dark-mode');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+}

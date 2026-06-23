@@ -1,23 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sunshine Beach Resort — Sand, Sea & Serenity | Tondavali, Sindhudurg</title>
-  <meta name="description" content="Experience luxury beachside living at Sunshine Beach Resort, Tondavali. Stunning ocean views, authentic Konkani cuisine, water sports & serene beach access. Book now!">
+  <title>Sunshine Beach Resort</title>
+  <meta name="description"
+    content="Experience luxury beachside living at Sunshine Beach Resort, Tondavali. Stunning ocean views, authentic Konkani cuisine, water sports & serene beach access. Book now!">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="assets/images/logo/logo.png">
   <!-- GSAP + ScrollTrigger CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
+
 <body>
 
+  <!-- ═══════════ LUCIDE SVG SPRITES ═══════════ -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="lucide-umbrella" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M22 12a10.06 10.06 1 0 0-20 0Z" />
+  <path d="M12 12v8a2 2 0 0 0 4 0" />
+  <path d="M12 2v1" />
+  </symbol>
+  <symbol id="lucide-utensils" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+  <path d="M7 2v20" />
+  <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+  </symbol>
+  <symbol id="lucide-waves" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+  <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+  <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+  </symbol>
+  <symbol id="lucide-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M12 20h.01" />
+  <path d="M2 8.82a15 15 0 0 1 20 0" />
+  <path d="M5 12.859a10 10 0 0 1 14 0" />
+  <path d="M8.5 16.429a5 5 0 0 1 7 0" />
+  </symbol>
+  <symbol id="lucide-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
+  <path d="M9.6 4.6A2 2 0 1 1 11 8H2" />
+  <path d="M12.6 19.4A2 2 0 1 0 14 16H2" />
+  </symbol>
+  <symbol id="lucide-bed-double" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8" />
+  <path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" />
+  <path d="M12 4v6" />
+  <path d="M2 18h20" />
+  </symbol>
+  <symbol id="lucide-shower-head" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="m4 4 2.5 2.5" />
+  <path d="M13.5 6.5a4.95 4.95 0 0 0-7 7" />
+  <path d="M15 5 5 15" />
+  <path d="M14 17v.01" />
+  <path d="M10 16v.01" />
+  <path d="M13 13v.01" />
+  <path d="M16 10v.01" />
+  <path d="M11 20v.01" />
+  <path d="M17 14v.01" />
+  <path d="M20 11v.01" />
+  </symbol>
+  <symbol id="lucide-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </symbol>
+  <symbol id="lucide-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M10 2v2" />
+  <path d="M14 2v2" />
+  <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
+  <path d="M6 2v2" />
+  </symbol>
+  <symbol id="lucide-soup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z" />
+  <path d="M7 21h10" />
+  <path d="M19.5 12 22 6" />
+  <path d="M16.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.73 1.62" />
+  <path d="M11.25 3c.27.1.8.53.74 1.36-.05.83-.93 1.2-.98 2.02-.06.78.33 1.24.72 1.62" />
+  <path d="M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62" />
+  </symbol>
+  <symbol id="lucide-circle-parking" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <circle cx="12" cy="12" r="10" />
+  <path d="M9 17V7h4a3 3 0 0 1 0 6H9" />
+  </symbol>
+  <symbol id="lucide-gamepad-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <line x1="6" x2="10" y1="11" y2="11" />
+  <line x1="8" x2="8" y1="9" y2="13" />
+  <line x1="15" x2="15.01" y1="12" y2="12" />
+  <line x1="18" x2="18.01" y1="10" y2="10" />
+  <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+  </symbol>
+  <symbol id="lucide-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M12 2v8" />
+  <path d="m4.93 10.93 1.41 1.41" />
+  <path d="M2 18h2" />
+  <path d="M20 18h2" />
+  <path d="m19.07 10.93-1.41 1.41" />
+  <path d="M22 22H2" />
+  <path d="m8 6 4-4 4 4" />
+  <path d="M16 18a4 4 0 0 0-8 0" />
+  </symbol>
+  <symbol id="lucide-chef-hat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z" />
+  <path d="M6 17h12" />
+  </symbol>
+  <symbol id="lucide-footprints" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" />
+  <path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" />
+  <path d="M16 17h4" />
+  <path d="M4 13h4" />
+  </symbol>
+  <symbol id="lucide-sunset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M12 10V2" />
+  <path d="m4.93 10.93 1.41 1.41" />
+  <path d="M2 18h2" />
+  <path d="M20 18h2" />
+  <path d="m19.07 10.93-1.41 1.41" />
+  <path d="M22 22H2" />
+  <path d="m16 6-4 4-4-4" />
+  <path d="M16 18a4 4 0 0 0-8 0" />
+  </symbol>
+  <symbol id="lucide-sailboat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M22 18H2a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4Z" />
+  <path d="M21 14 10 2 3 14h18Z" />
+  <path d="M10 2v16" />
+  </symbol>
+  <symbol id="lucide-life-buoy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <circle cx="12" cy="12" r="10" />
+  <path d="m4.93 4.93 4.24 4.24" />
+  <path d="m14.83 9.17 4.24-4.24" />
+  <path d="m14.83 14.83 4.24 4.24" />
+  <path d="m9.17 14.83-4.24 4.24" />
+  <circle cx="12" cy="12" r="4" />
+  </symbol>
+  <symbol id="lucide-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+  <circle cx="12" cy="10" r="3" />
+  </symbol>
+  <symbol id="lucide-external-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+  </symbol>
+  <symbol id="lucide-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" />
+  <path d="M15 5.764v15" />
+  <path d="M9 3.236v15" />
+  </symbol>
+  <symbol id="lucide-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+  </symbol>
+  <symbol id="lucide-log-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+  <polyline points="10 17 15 12 10 7" />
+  <line x1="15" x2="3" y1="12" y2="12" />
+  </symbol>
+  <symbol id="lucide-log-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+  <polyline points="16 17 21 12 16 7" />
+  <line x1="21" x2="9" y1="12" y2="12" />
+  </symbol>
+  <symbol id="lucide-credit-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <rect width="20" height="14" x="2" y="5" rx="2" />
+  <line x1="2" x2="22" y1="10" y2="10" />
+  </symbol>
+  <symbol id="lucide-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+  </symbol>
+  <symbol id="lucide-message-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+  </symbol>
+  <symbol id="lucide-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+  </symbol>
+  <symbol id="lucide-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </symbol>
+  <symbol id="lucide-star" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </symbol>
+  <symbol id="lucide-star-half" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 17.8 5.8 21 7 14.1 2 9.3l7-1L12 2" />
+  </symbol>
+  <symbol id="lucide-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2" />
+    <path d="M12 20v2" />
+    <path d="m4.93 4.93 1.41 1.41" />
+    <path d="m17.66 17.66 1.41 1.41" />
+    <path d="M2 12h2" />
+    <path d="M20 12h2" />
+    <path d="m6.34 17.66-1.41 1.41" />
+    <path d="m19.07 4.93-1.41 1.41" />
+  </symbol>
+  <symbol id="lucide-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+  </symbol>
+</svg>
+
+
+  <!-- ═══════════ SITE LOADER ═══════════ -->
+  <div class="site-loader" id="siteLoader">
+    <div class="loader-content">
+      <img src="assets/images/logo/logo.png" alt="Sunshine Resort Loader">
+    </div>
+  </div>
   <!-- ═══════════ NAVBAR ═══════════ -->
   <nav class="navbar" id="navbar">
     <a href="#" class="nav-logo">
       <img src="assets/images/logo/logo.png" alt="Sunshine Resort" class="logo-img">
     </a>
-    <a href="#booking" class="nav-cta">Book Now</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#dining">Dining</a></li>
+        <li><a href="#activities">Activities</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <svg class="lucide sun"><use href="#lucide-sun"></use></svg>
+        <svg class="lucide moon"><use href="#lucide-moon"></use></svg>
+      </button>
+      <a href="#booking" class="nav-cta">Book Now</a>
+    </div>
   </nav>
 
   <!-- ═══════════ HERO — GSAP Scroll-Scrub Canvas ═══════════ -->
@@ -27,7 +268,8 @@
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1>A Symphony of <span>Sand, Sea</span> & Serenity</h1>
-        <p>Nestled along the pristine Konkan coastline, discover where every wave whispers luxury and every moment becomes a cherished memory.</p>
+        <p>Nestled along the pristine Konkan coastline, discover where every wave whispers luxury and every moment
+          becomes a cherished memory.</p>
         <div class="hero-buttons">
           <a href="#booking" class="btn-primary">Reserve Your Stay</a>
           <a href="#rooms" class="btn-secondary">Explore Rooms</a>
@@ -72,20 +314,41 @@
       <div class="about-image reveal">
         <img src="assets/images/about.jpg" alt="Sunshine Beach Resort — beach with colorful lighting">
         <div class="about-image-badge">
-          <div class="badge-num">4★</div>
-          <div class="badge-text">Rated Experience</div>
+          <div class="badge-stars">
+            <svg class="lucide star"><use href="#lucide-star"></use></svg>
+            <svg class="lucide star"><use href="#lucide-star"></use></svg>
+            <svg class="lucide star"><use href="#lucide-star"></use></svg>
+            <svg class="lucide star"><use href="#lucide-star"></use></svg>
+            <svg class="lucide star empty"><use href="#lucide-star"></use></svg>
+          </div>
+          <div class="badge-info">
+            <div class="badge-num">4 / 5</div>
+            <div class="badge-text">RATED EXPERIENCE</div>
+          </div>
         </div>
       </div>
       <div class="about-text reveal">
         <span class="section-label">Welcome to Paradise</span>
         <h2>Your Beachside Sanctuary Awaits</h2>
-        <p>Welcome to Sunshine Beach Resort, where every wave whispers luxury and every moment becomes a cherished memory. Nestled along the pristine coastline, our resort offers the perfect blend of natural beauty, modern comfort, and warm hospitality.</p>
-        <p>Whether you're planning a romantic escape, a family holiday, or a peaceful retreat, our elegant accommodations, stunning ocean views, and serene surroundings provide the perfect setting to relax and reconnect.</p>
+        <p>Welcome to Sunshine Beach Resort, where every wave whispers luxury and every moment becomes a cherished
+          memory. Nestled along the pristine coastline, our resort offers the perfect blend of natural beauty, modern
+          comfort, and warm hospitality.</p>
+        <p>Whether you're planning a romantic escape, a family holiday, or a peaceful retreat, our elegant
+          accommodations, stunning ocean views, and serene surroundings provide the perfect setting to relax and
+          reconnect.</p>
         <div class="about-features">
-          <div class="about-feature"><span class="feat-icon">🏖️</span><span class="feat-text">Direct Beach Access</span></div>
-          <div class="about-feature"><span class="feat-icon">🍽️</span><span class="feat-text">Homemade Konkani Food</span></div>
-          <div class="about-feature"><span class="feat-icon">🌊</span><span class="feat-text">Ocean View Rooms</span></div>
-          <div class="about-feature"><span class="feat-icon">📶</span><span class="feat-text">Free Wi-Fi</span></div>
+          <div class="about-feature"><svg class="lucide feat-icon">
+              <use href="#lucide-umbrella"></use>
+            </svg><span class="feat-text">Direct Beach Access</span></div>
+          <div class="about-feature"><svg class="lucide feat-icon">
+              <use href="#lucide-utensils"></use>
+            </svg><span class="feat-text">Homemade Konkani Food</span></div>
+          <div class="about-feature"><svg class="lucide feat-icon">
+              <use href="#lucide-waves"></use>
+            </svg><span class="feat-text">Ocean View Rooms</span></div>
+          <div class="about-feature"><svg class="lucide feat-icon">
+              <use href="#lucide-wifi"></use>
+            </svg><span class="feat-text">Free Wi-Fi</span></div>
         </div>
       </div>
     </div>
@@ -96,7 +359,8 @@
     <div class="section-header reveal">
       <span class="section-label">Accommodations</span>
       <h2 class="section-title">Choose Your Perfect Stay</h2>
-      <p class="section-subtitle">Each room is thoughtfully designed to provide comfort, space, and breathtaking views of the ocean.</p>
+      <p class="section-subtitle">Each room is thoughtfully designed to provide comfort, space, and breathtaking views
+        of the ocean.</p>
     </div>
     <div class="rooms-grid">
       <!-- Deluxe Ocean View — AC room with blue walls -->
@@ -113,7 +377,15 @@
             <span class="per">/ night (AC)</span>
           </div>
           <div class="room-amenities">
-            <span>🌬️ AC</span><span>📶 Wi-Fi</span><span>🛏️ King Bed</span><span>🌊 Ocean View</span>
+            <span><svg class="lucide">
+                <use href="#lucide-wind"></use>
+              </svg> AC</span><span><svg class="lucide">
+                <use href="#lucide-wifi"></use>
+              </svg> Wi-Fi</span><span><svg class="lucide">
+                <use href="#lucide-bed-double"></use>
+              </svg> King Bed</span><span><svg class="lucide">
+                <use href="#lucide-waves"></use>
+              </svg> Ocean View</span>
           </div>
         </div>
       </div>
@@ -131,7 +403,13 @@
             <span class="per">/ night (Non-AC)</span>
           </div>
           <div class="room-amenities">
-            <span>📶 Wi-Fi</span><span>🛏️ Queen Bed</span><span>🚿 Hot Water</span>
+            <span><svg class="lucide">
+                <use href="#lucide-wifi"></use>
+              </svg> Wi-Fi</span><span><svg class="lucide">
+                <use href="#lucide-bed-double"></use>
+              </svg> Queen Bed</span><span><svg class="lucide">
+                <use href="#lucide-shower-head"></use>
+              </svg> Hot Water</span>
           </div>
         </div>
       </div>
@@ -149,7 +427,15 @@
             <span class="per">/ night (Hall — up to 8)</span>
           </div>
           <div class="room-amenities">
-            <span>🌬️ AC</span><span>📶 Wi-Fi</span><span>👨‍👩‍👧‍👦 8 Guests</span><span>🌊 View</span>
+            <span><svg class="lucide">
+                <use href="#lucide-wind"></use>
+              </svg> AC</span><span><svg class="lucide">
+                <use href="#lucide-wifi"></use>
+              </svg> Wi-Fi</span><span><svg class="lucide">
+                <use href="#lucide-users"></use>
+              </svg> 8 Guests</span><span><svg class="lucide">
+                <use href="#lucide-waves"></use>
+              </svg> View</span>
           </div>
         </div>
       </div>
@@ -164,15 +450,51 @@
       <p class="section-subtitle">Everything you need for a perfect beach vacation, all under one roof.</p>
     </div>
     <div class="amenities-grid">
-      <div class="amenity-card reveal"><span class="amenity-icon">🏖️</span><h4>Direct Beach Access</h4></div>
-      <div class="amenity-card reveal"><span class="amenity-icon">📶</span><h4>Complimentary Wi-Fi</h4></div>
-      <div class="amenity-card reveal"><span class="amenity-icon">🍳</span><h4>Breakfast Included</h4></div>
-      <div class="amenity-card reveal"><span class="amenity-icon">🍲</span><h4>Lunch &amp; Dinner</h4></div>
-      <div class="amenity-card reveal"><span class="amenity-icon">🌊</span><h4>Ocean View Rooms</h4></div>
-      <div class="amenity-card reveal"><span class="amenity-icon">🅿️</span><h4>Free Parking</h4></div>
-      <div class="amenity-card reveal"><span class="amenity-icon">🎮</span><h4>Recreational Spaces</h4></div>
-      <div class="amenity-card reveal"><span class="amenity-icon">🍽️</span><h4>Dining Area</h4></div>
-      <div class="amenity-card reveal"><span class="amenity-icon">🚿</span><h4>Hot Water</h4></div>
+      <div class="amenity-card reveal" style="--item-color: #FF595E;"><svg class="lucide amenity-icon">
+          <use href="#lucide-umbrella"></use>
+        </svg>
+        <h4>Direct Beach Access</h4>
+      </div>
+      <div class="amenity-card reveal" style="--item-color: #1982C4;"><svg class="lucide amenity-icon">
+          <use href="#lucide-wifi"></use>
+        </svg>
+        <h4>Complimentary Wi-Fi</h4>
+      </div>
+      <div class="amenity-card reveal" style="--item-color: #FFCA3A;"><svg class="lucide amenity-icon">
+          <use href="#lucide-coffee"></use>
+        </svg>
+        <h4>Breakfast Included</h4>
+      </div>
+      <div class="amenity-card reveal" style="--item-color: #FF924C;"><svg class="lucide amenity-icon">
+          <use href="#lucide-soup"></use>
+        </svg>
+        <h4>Lunch &amp; Dinner</h4>
+      </div>
+      <div class="amenity-card reveal" style="--item-color: #8AC926;"><svg class="lucide amenity-icon">
+          <use href="#lucide-waves"></use>
+        </svg>
+        <h4>Ocean View Rooms</h4>
+      </div>
+      <div class="amenity-card reveal" style="--item-color: #6A4C93;"><svg class="lucide amenity-icon">
+          <use href="#lucide-circle-parking"></use>
+        </svg>
+        <h4>Free Parking</h4>
+      </div>
+      <div class="amenity-card reveal" style="--item-color: #F15BB5;"><svg class="lucide amenity-icon">
+          <use href="#lucide-gamepad-2"></use>
+        </svg>
+        <h4>Recreational Spaces</h4>
+      </div>
+      <div class="amenity-card reveal" style="--item-color: #4267AC;"><svg class="lucide amenity-icon">
+          <use href="#lucide-utensils"></use>
+        </svg>
+        <h4>Dining Area</h4>
+      </div>
+      <div class="amenity-card reveal"><svg class="lucide amenity-icon">
+          <use href="#lucide-shower-head"></use>
+        </svg>
+        <h4>Hot Water</h4>
+      </div>
     </div>
   </section>
 
@@ -181,7 +503,8 @@
     <div class="section-header reveal">
       <span class="section-label">Culinary Journey</span>
       <h2 class="section-title">Authentic Konkani Cuisine</h2>
-      <p class="section-subtitle">Savor homemade coastal flavors in a peaceful seaside setting with panoramic ocean views.</p>
+      <p class="section-subtitle">Savor homemade coastal flavors in a peaceful seaside setting with panoramic ocean
+        views.</p>
     </div>
     <div class="dining-wrapper">
       <div class="dining-images reveal">
@@ -192,7 +515,9 @@
       <div class="dining-content reveal">
         <h3>Our Menu</h3>
         <div class="menu-category">
-          <h4>🍛 Main Course Thalis</h4>
+          <h4><svg class="lucide">
+              <use href="#lucide-utensils"></use>
+            </svg> Main Course Thalis</h4>
           <div class="menu-items">
             <span>Surmai Thali</span><span>Pomfret Thali</span><span>Prawns Thali</span>
             <span>Bangda Thali</span><span>Chicken Thali</span><span>Egg Thali</span>
@@ -200,13 +525,17 @@
           </div>
         </div>
         <div class="menu-category">
-          <h4>🌅 Breakfast</h4>
+          <h4><svg class="lucide">
+              <use href="#lucide-sunrise"></use>
+            </svg> Breakfast</h4>
           <div class="menu-items">
             <span>Poha</span><span>Ghavan with Chutney</span><span>Upma</span><span>Sheera</span>
           </div>
         </div>
         <div class="menu-category">
-          <h4>🍤 Snacks &amp; Sides</h4>
+          <h4><svg class="lucide">
+              <use href="#lucide-chef-hat"></use>
+            </svg> Snacks &amp; Sides</h4>
           <div class="menu-items">
             <span>Surmai Fry</span><span>Pomfret Fry</span><span>Prawns Fry</span>
             <span>Chicken Masala</span><span>Prawns Masala</span><span>Kanda Bhaji</span>
@@ -222,20 +551,35 @@
     <div class="section-header reveal">
       <span class="section-label">Things to Do</span>
       <h2 class="section-title">Experiences &amp; Adventures</h2>
-      <p class="section-subtitle">From serene sunrise walks to thrilling water sports, there's something for everyone.</p>
+      <p class="section-subtitle">From serene sunrise walks to thrilling water sports, there's something for everyone.
+      </p>
     </div>
     <div class="activities-grid">
       <div class="activities-image reveal">
         <img src="assets/images/gallery/gallery-1.jpg" alt="Sunset beach activities">
       </div>
       <div class="activities-list reveal">
-        <div class="activity-item"><span class="act-icon">🚶</span><span class="act-text">Beach Walks</span></div>
-        <div class="activity-item"><span class="act-icon">🌅</span><span class="act-text">Sunrise Views</span></div>
-        <div class="activity-item"><span class="act-icon">🌇</span><span class="act-text">Sunset Views</span></div>
-        <div class="activity-item"><span class="act-icon">👨‍👩‍👧‍👦</span><span class="act-text">Family Recreation</span></div>
-        <div class="activity-item"><span class="act-icon">⛵</span><span class="act-text">Boating</span></div>
-        <div class="activity-item"><span class="act-icon">🏄</span><span class="act-text">Jet Ski</span></div>
-        <div class="activity-item"><span class="act-icon">🤿</span><span class="act-text">Water Sports</span></div>
+        <div class="activity-item" style="--item-color: #FF595E;"><svg class="lucide act-icon">
+            <use href="#lucide-footprints"></use>
+          </svg><span class="act-text">Beach Walks</span></div>
+        <div class="activity-item" style="--item-color: #FF924C;"><svg class="lucide act-icon">
+            <use href="#lucide-sunrise"></use>
+          </svg><span class="act-text">Sunrise Views</span></div>
+        <div class="activity-item" style="--item-color: #FFCA3A;"><svg class="lucide act-icon">
+            <use href="#lucide-sunset"></use>
+          </svg><span class="act-text">Sunset Views</span></div>
+        <div class="activity-item" style="--item-color: #8AC926;"><svg class="lucide act-icon">
+            <use href="#lucide-users"></use>
+          </svg><span class="act-text">Family Recreation</span></div>
+        <div class="activity-item" style="--item-color: #1982C4;"><svg class="lucide act-icon">
+            <use href="#lucide-sailboat"></use>
+          </svg><span class="act-text">Boating</span></div>
+        <div class="activity-item" style="--item-color: #4267AC;"><svg class="lucide act-icon">
+            <use href="#lucide-waves"></use>
+          </svg><span class="act-text">Jet Ski</span></div>
+        <div class="activity-item" style="--item-color: #6A4C93;"><svg class="lucide act-icon">
+            <use href="#lucide-life-buoy"></use>
+          </svg><span class="act-text">Water Sports</span></div>
       </div>
     </div>
   </section>
@@ -294,56 +638,177 @@
     <div class="section-header reveal">
       <span class="section-label">Find Us</span>
       <h2 class="section-title">Our Location</h2>
-      <p class="section-subtitle">Located in the heart of Tondavali beach, surrounded by nature's finest attractions.</p>
+      <p class="section-subtitle">Located in the heart of Tondavali beach, surrounded by nature's finest attractions.
+      </p>
     </div>
-    <div class="location-grid">
-      <div class="location-map reveal">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.427707471285!2d73.4540772!3d16.1241854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3beaa76529dcbeeb%3A0x32922668ba07fe43!2sSunshine+Beach+Resort!5e0!3m2!1sen!2sin!4v1718125672000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Sunshine Beach Resort Location"></iframe>
-      </div>
-      <div class="location-info reveal">
-        <h3>Getting Here</h3>
-        <p>At Post Tondavali Madhli, Taluka Malvan, District Sindhudurg — where the Konkan coast reveals its most beautiful stretch.</p>
-        <h4 style="font-family:'DM Sans',sans-serif;font-size:0.82rem;text-transform:uppercase;letter-spacing:2px;color:var(--ocean);margin-bottom:14px;font-weight:600;">Nearby Attractions</h4>
-        <div class="nearby-list">
-          <div class="nearby-item"><span class="nb-icon">🪨</span><span class="nb-text">Kavada Rock</span></div>
-          <div class="nearby-item"><span class="nb-icon">🌊</span><span class="nb-text">Shimpla Point</span></div>
-          <div class="nearby-item"><span class="nb-icon">🏞️</span><span class="nb-text">Tondavali Estuary</span></div>
+    <div class="loc-wrap reveal">
+      <div class="layout">
+        <!-- Map panel -->
+        <div class="map-panel">
+          <div class="map-water"></div>
+          <div class="map-sand"></div>
+          <div class="map-road-v"></div>
+          <div class="map-road-h"></div>
+          <div class="map-overlay-card">
+            <div class="map-resort-name">Sunshine Beach Resort</div>
+            <div class="map-address">Sarjekot, Tondwali Peninsula,<br>Tondavali, MH 416626</div>
+            <div class="map-rating">
+              <span>4.6</span>
+              <span class="map-stars">★★★★★</span>
+              <span style="color:var(--text-light); font-weight:400;">(89)</span>
+            </div>
+          </div>
+          <div class="map-pin-area">
+            <div class="map-pin"><svg class="lucide">
+                <use href="#lucide-map-pin"></use>
+              </svg></div>
+            <div class="map-pin-label">Sunshine Beach Resort</div>
+          </div>
+          <a class="map-open-btn" href="https://maps.app.goo.gl/f39StHTiVGMEgdhb7" target="_blank">
+            <svg class="lucide" style="font-size:13px">
+              <use href="#lucide-external-link"></use>
+            </svg>
+            Open in Google Maps
+          </a>
         </div>
-        <a href="https://maps.app.goo.gl/f39StHTiVGMEgdhb7" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;">📍 Open in Google Maps</a>
-      </div>
-    </div>
+
+        <!-- Info panel -->
+        <div class="info-panel">
+          <div class="address-card">
+            <div class="address-icon"><svg class="lucide">
+                <use href="#lucide-map"></use>
+              </svg></div>
+            <div class="address-text">
+              <div class="a-label">Getting here</div>
+              <div class="a-value">Post Tondavali Madhli, Taluka Malvan, District Sindhudurg — where the Konkan coast
+                reveals its most beautiful stretch.</div>
+            </div>
+          </div>
+
+          <div class="attractions-section">
+            <div class="att-label">Nearby attractions</div>
+            <div class="att-list">
+              <div class="att-item">
+                <div class="att-dot dot-rock"></div>
+                <span class="att-name">Kavada Rock</span>
+                <span class="att-dist">~2 km</span>
+              </div>
+              <div class="att-item">
+                <div class="att-dot dot-point"></div>
+                <span class="att-name">Shimpla Point</span>
+                <span class="att-dist">~15 km</span>
+              </div>
+              <div class="att-item">
+                <div class="att-dot dot-estuary"></div>
+                <span class="att-name">Sindhudurg Fort</span>
+                <span class="att-dist">~20 km</span>
+              </div>
+            </div>
+            <!-- </div>
+
+          <a class="gmaps-btn" href="https://maps.app.goo.gl/f39StHTiVGMEgdhb7" target="_blank">
+            <div class="gmaps-icon"><svg class="lucide"><use href="#lucide-map-pin"></use></svg></div>
+            Open in Google Maps
+            <svg class="lucide" style="margin-left:auto; color:var(--text-light)"><use href="#lucide-arrow-right"></use></svg>
+          </a>
+        </div> -->
+          </div>
+        </div>
   </section>
 
   <!-- ═══════════ BOOKING / CONTACT ═══════════ -->
   <section class="section booking" id="booking">
-    <div class="section-header reveal">
-      <span class="section-label">Reserve Your Stay</span>
-      <h2 class="section-title">Book Your Getaway</h2>
-      <p class="section-subtitle">Reach us via phone or WhatsApp. An advance payment of ₹1,000 confirms your reservation.</p>
-    </div>
-    <div class="booking-info reveal">
-      <div class="booking-details">
-        <div class="booking-detail">
-          <span class="bd-icon">🕐</span>
-          <h4>Check-in</h4>
-          <p>11:00 AM</p>
+    <div class="booking-wrap reveal">
+      <h2 class="sr-only" style="display:none;">Book your getaway — contact and check-in details</h2>
+      <p class="eyebrow">Reserve your stay</p>
+      <h2 class="main-heading">Book Your Getaway</h2>
+      <p class="sub">Reach us via phone or WhatsApp to confirm your reservation.</p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon icon-teal"><svg class="lucide">
+              <use href="#lucide-log-in"></use>
+            </svg></div>
+          <div class="info-card-text">
+            <div class="label">Check-in</div>
+            <div class="value">11:00 AM</div>
+            <div class="sub-value">Earliest arrival</div>
+          </div>
         </div>
-        <div class="booking-detail">
-          <span class="bd-icon">🕙</span>
-          <h4>Check-out</h4>
-          <p>10:00 AM</p>
+        <div class="info-card">
+          <div class="info-icon icon-amber"><svg class="lucide">
+              <use href="#lucide-log-out"></use>
+            </svg></div>
+          <div class="info-card-text">
+            <div class="label">Check-out</div>
+            <div class="value">10:00 AM</div>
+            <div class="sub-value">Latest departure</div>
+          </div>
         </div>
-        <div class="booking-detail">
-          <span class="bd-icon">💳</span>
-          <h4>Payment</h4>
-          <p>Cash · UPI · GPay · PhonePe</p>
+        <div class="info-card">
+          <div class="info-icon icon-blue"><svg class="lucide">
+              <use href="#lucide-credit-card"></use>
+            </svg></div>
+          <div class="info-card-text">
+            <div class="label">Payment</div>
+            <div class="value">All modes</div>
+            <div class="sub-value">Cash · UPI · GPay</div>
+          </div>
         </div>
       </div>
-      <div class="booking-contacts">
-        <a href="tel:+917517265059" class="booking-contact-btn">📞 Babu Patil — 7517265059</a>
-        <a href="tel:+919021088623" class="booking-contact-btn">📞 Rohit — 9021088623</a>
-        <a href="https://wa.me/918275316235" target="_blank" class="booking-contact-btn whatsapp">💬 WhatsApp — Babu Patil</a>
-        <a href="https://wa.me/919420195381" target="_blank" class="booking-contact-btn whatsapp">💬 WhatsApp — Sanika Patil</a>
+
+      <hr class="divider">
+
+      <p class="contacts-label">Get in touch</p>
+
+      <div class="contacts-grid">
+        <a class="contact-btn" href="tel:+917517265059">
+          <div class="c-avatar phone-avatar"><svg class="lucide">
+              <use href="#lucide-phone"></use>
+            </svg></div>
+          <div class="c-info">
+            <div class="c-name">Babu Patil</div>
+            <div class="c-num">75172 65059</div>
+          </div>
+          <span class="c-tag tag-call">Call</span>
+        </a>
+        <a class="contact-btn" href="tel:+919021088623">
+          <div class="c-avatar phone-avatar"><svg class="lucide">
+              <use href="#lucide-phone"></use>
+            </svg></div>
+          <div class="c-info">
+            <div class="c-name">Rohit Golatkar</div>
+            <div class="c-num">90210 88623</div>
+          </div>
+          <span class="c-tag tag-call">Call</span>
+        </a>
+        <a class="contact-btn" href="https://wa.me/917517265059" target="_blank">
+          <div class="c-avatar wa-avatar"><svg class="lucide">
+              <use href="#lucide-message-circle"></use>
+            </svg></div>
+          <div class="c-info">
+            <div class="c-name">Babu Patil</div>
+            <div class="c-num">WhatsApp</div>
+          </div>
+          <span class="c-tag tag-whatsapp">Chat</span>
+        </a>
+        <a class="contact-btn" href="https://wa.me/919420195381" target="_blank">
+          <div class="c-avatar wa-avatar"><svg class="lucide">
+              <use href="#lucide-message-circle"></use>
+            </svg></div>
+          <div class="c-info">
+            <div class="c-name">Sanika Patil</div>
+            <div class="c-num">WhatsApp</div>
+          </div>
+          <span class="c-tag tag-whatsapp">Chat</span>
+        </a>
+      </div>
+
+      <div class="advance-note">
+        <svg class="lucide" style="color:var(--ocean); font-size:1.1rem;"><use href="#lucide-shield-check"></use></svg>
+        <span>Advance of</span>
+        <span class="advance-badge">₹1,000</span>
+        <span>confirms your reservation</span>
       </div>
     </div>
   </section>
@@ -352,7 +817,7 @@
   <footer class="footer" id="footer">
     <div class="footer-grid">
       <div class="footer-brand">
-        <h3>☀ Sunshine Beach Resort</h3>
+        <img src="assets/images/logo/logo.png" alt="Sunshine Beach Resort" class="footer-logo">
         <p>A Symphony of Sand, Sea, and Serenity. At Post Tondavali Madhli, Taluka Malvan, District Sindhudurg.</p>
       </div>
       <div class="footer-col">
@@ -376,17 +841,24 @@
       <div class="footer-col">
         <h4>Follow Us</h4>
         <ul>
-          <li><a href="https://instagram.com/sun_shine_beach_resort" target="_blank">📸 @sun_shine_beach_resort</a></li>
-          <li><a href="tel:+917517265059">📞 7517265059</a></li>
-          <li><a href="https://wa.me/918275316235" target="_blank">💬 WhatsApp</a></li>
+          <li><a href="https://instagram.com/sun_shine_beach_resort" target="_blank"><svg class="lucide">
+                <use href="#lucide-instagram"></use>
+              </svg> @sun_shine_beach_resort</a></li>
+          <li><a href="tel:+917517265059"><svg class="lucide">
+                <use href="#lucide-phone"></use>
+              </svg> 7517265059</a></li>
+          <li><a href="https://wa.me/918275316235" target="_blank"><svg class="lucide">
+                <use href="#lucide-message-circle"></use>
+              </svg> WhatsApp</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Sunshine Beach Resort. All rights reserved.</p>
+      <p>&copy; <span id="currentYear"></span> Sunshine Beach Resort. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>

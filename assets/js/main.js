@@ -10,7 +10,7 @@
   const frameCount = frameIndices.length; // ~30
 
   const framePad = (i) => String(i).padStart(3, '0');
-  const framePath = (i) => `assets/images/hero-frames/ezgif-frame-${framePad(i)}.jpg`;
+  const framePath = (i) => `assets/images/hero-frames/ezgif-frame-${framePad(i)}.webp`;
 
   const images = new Array(frameCount);
   let loadedCount = 0;

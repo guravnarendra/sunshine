@@ -204,22 +204,94 @@ if (currentYearEl) {
   currentYearEl.textContent = new Date().getFullYear();
 }
 
-// ─── Theme Toggle (Dark/Light Mode) ───
-const themeToggle = document.getElementById('themeToggle');
-if (themeToggle) {
-  const body = document.body;
+// ─── Hamburger Mobile Menu ───
+const hamburgerCheckbox = document.getElementById('hamburgerCheckbox');
+const navLinks = document.getElementById('navLinks');
+if (hamburgerCheckbox && navLinks) {
+  hamburgerCheckbox.addEventListener('change', () => {
+    const isOpen = hamburgerCheckbox.checked;
+    navLinks.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
 
-  // Check local storage for theme preference, or system preference
-  const savedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    body.classList.add('dark-mode');
-  }
-
-  themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  // Close menu when a nav link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburgerCheckbox.checked = false;
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   });
 }
+
+
+// ─── Reviews Carousel Controls ───
+(function () {
+  const track = document.getElementById('reviewsTrack');
+  const prevBtn = document.getElementById('reviewsPrev');
+  const nextBtn = document.getElementById('reviewsNext');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  const scrollAmount = 364; // card width (340) + gap (24)
+
+  prevBtn.addEventListener('click', () => {
+    track.parentElement.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  nextBtn.addEventListener('click', () => {
+    track.parentElement.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+})();
+
+// ─── Room AC / Non-AC Pricing & Filter Toggle ───
+(function () {
+  const toggleBtns = document.querySelectorAll('.toggle-capsule-btn');
+  const roomCards = document.querySelectorAll('.rooms-grid .room-card');
+  if (!toggleBtns.length || !roomCards.length) return;
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const mode = this.getAttribute('data-mode');
+
+      toggleBtns.forEach(b => {
+        const isActive = b === this;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      roomCards.forEach(card => {
+        const types = card.getAttribute('data-room-type') || '';
+        const priceEl = card.querySelector('.price');
+        const perEl = card.querySelector('.per');
+        const acTagContainer = card.querySelector('.ac-tag');
+        const acTagText = card.querySelector('.ac-tag-text');
+
+        if (types.includes(mode)) {
+          card.style.display = 'block';
+          card.classList.add('active');
+
+          if (acTagContainer && acTagText) {
+            const newTag = mode === 'ac' ? acTagContainer.getAttribute('data-ac') : acTagContainer.getAttribute('data-nonac');
+            if (newTag) acTagText.textContent = newTag;
+          }
+
+          if (priceEl) {
+            priceEl.classList.add('updating');
+            setTimeout(() => {
+              const newPrice = mode === 'ac' ? priceEl.getAttribute('data-price-ac') : priceEl.getAttribute('data-price-nonac');
+              if (newPrice) priceEl.textContent = newPrice;
+              priceEl.classList.remove('updating');
+            }, 120);
+          }
+
+          if (perEl) {
+            const newUnit = mode === 'ac' ? perEl.getAttribute('data-unit-ac') : perEl.getAttribute('data-unit-nonac');
+            if (newUnit) perEl.textContent = newUnit;
+          }
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+})();

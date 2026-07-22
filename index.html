@@ -14,7 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 
-<body>
+<body class="dark-mode">
 
   <!-- ═══════════ LUCIDE SVG SPRITES ═══════════ -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -288,21 +288,24 @@
       <img src="assets/images/logo/logo.webp" alt="Sunshine Resort" class="logo-img">
     </a>
     <div class="nav-right">
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#rooms">Rooms</a></li>
         <li><a href="#dining">Dining</a></li>
         <li><a href="#activities">Activities</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li class="nav-links-cta"><a href="#booking" class="nav-cta">Book Now</a></li>
       </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-        <svg class="lucide sun">
-          <use href="#lucide-sun"></use>
+      <a href="#booking" class="nav-cta nav-cta-desktop">Book Now</a>
+      <label class="hamburger" id="hamburger">
+        <input type="checkbox" id="hamburgerCheckbox" aria-label="Toggle navigation menu">
+        <svg viewBox="0 0 32 32">
+          <path class="line line-top-bottom"
+            d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 15.2 30 13 30 10.8 30 9 28.2 9 26 9 23.8 10.8 22 13 22L27 22">
+          </path>
+          <path class="line" d="M7 16 27 16"></path>
         </svg>
-        <svg class="lucide moon">
-          <use href="#lucide-moon"></use>
-        </svg>
-      </button>
-      <a href="#booking" class="nav-cta">Book Now</a>
+      </label>
     </div>
   </nav>
 
@@ -377,7 +380,7 @@
             </svg>
           </div>
           <div class="badge-info">
-            <div class="badge-num">4 / 5</div>
+            <div class="badge-num">4.5 / 5</div>
             <div class="badge-text">RATED EXPERIENCE</div>
           </div>
         </div>
@@ -416,10 +419,30 @@
       <h2 class="section-title">Choose Your Perfect Stay</h2>
       <p class="section-subtitle">Each room is thoughtfully designed to provide comfort, space, and breathtaking views
         of the ocean.</p>
+
+      <!-- AC / Non-AC Capsule Toggle -->
+      <div class="room-toggle-container">
+        <div class="room-toggle-capsule" role="tablist" aria-label="Room Type Selection">
+          <button type="button" class="toggle-capsule-btn active" id="btnAC" data-mode="ac" role="tab"
+            aria-selected="true">
+            <svg class="lucide">
+              <use href="#lucide-wind"></use>
+            </svg>
+            AC Rooms
+          </button>
+          <button type="button" class="toggle-capsule-btn" id="btnNonAC" data-mode="non-ac" role="tab"
+            aria-selected="false">
+            <svg class="lucide">
+              <use href="#lucide-sun"></use>
+            </svg>
+            Non-AC Rooms
+          </button>
+        </div>
+      </div>
     </div>
     <div class="rooms-grid">
       <!-- Deluxe Ocean View — AC room with blue walls -->
-      <div class="room-card reveal">
+      <div class="room-card reveal" data-room-type="ac non-ac">
         <div class="room-card-img">
           <img src="assets/images/rooms/deluxe-ocean-view.webp" alt="Deluxe Ocean View Room with AC">
           <span class="room-card-tag">Premium</span>
@@ -428,13 +451,13 @@
           <h3>Deluxe Ocean View Room</h3>
           <p>Offers stunning ocean views and modern comforts for an unforgettable stay.</p>
           <div class="room-price">
-            <span class="price">₹2,500</span>
-            <span class="per">/ night (AC/Non-AC)</span>
+            <span class="price" data-price-ac="₹2,500" data-price-nonac="₹1,600">₹2,500</span>
+            <span class="per" data-unit-ac="/ night" data-unit-nonac="/ night">/ night</span>
           </div>
           <div class="room-amenities">
-            <span><svg class="lucide">
+            <span class="ac-tag" data-ac="Air Conditioned" data-nonac="Non-AC"><svg class="lucide">
                 <use href="#lucide-wind"></use>
-              </svg> AC / Non-AC</span><span><svg class="lucide">
+              </svg> <span class="ac-tag-text">Air Conditioned</span></span><span><svg class="lucide">
                 <use href="#lucide-wifi"></use>
               </svg> Wi-Fi</span><span><svg class="lucide">
                 <use href="#lucide-bed-double"></use>
@@ -450,7 +473,7 @@
         </div>
       </div>
       <!-- Sea Breeze — room with ocean window view -->
-      <div class="room-card reveal">
+      <div class="room-card reveal" data-room-type="ac non-ac">
         <div class="room-card-img">
           <img src="assets/images/rooms/sea-breeze.webp" alt="Sea Breeze Room with window view">
           <span class="room-card-tag">Popular</span>
@@ -459,13 +482,13 @@
           <h3>Sea Breeze Room</h3>
           <p>Designed for a peaceful and refreshing stay with soothing coastal breezes.</p>
           <div class="room-price">
-            <span class="price">₹1,600</span>
-            <span class="per">/ night (AC/Non-AC)</span>
+            <span class="price" data-price-ac="₹2,500" data-price-nonac="₹1,600">₹2,500</span>
+            <span class="per" data-unit-ac="/ night" data-unit-nonac="/ night">/ night</span>
           </div>
           <div class="room-amenities">
-            <span><svg class="lucide">
+            <span class="ac-tag" data-ac="Air Conditioned" data-nonac="Non-AC"><svg class="lucide">
                 <use href="#lucide-wind"></use>
-              </svg> AC / Non-AC</span><span><svg class="lucide">
+              </svg> <span class="ac-tag-text">Air Conditioned</span></span><span><svg class="lucide">
                 <use href="#lucide-wifi"></use>
               </svg> Wi-Fi</span><span><svg class="lucide">
                 <use href="#lucide-bed-double"></use>
@@ -479,8 +502,8 @@
           </div>
         </div>
       </div>
-      <!-- Family Suite — spacious hall room -->
-      <div class="room-card reveal">
+      <!-- Family Suite — spacious hall room (Non-AC only) -->
+      <div class="room-card reveal" data-room-type="non-ac" style="display: none;">
         <div class="room-card-img">
           <img src="assets/images/rooms/family-suite.webp" alt="Family Beach Suite Hall">
           <span class="room-card-tag">Spacious</span>
@@ -489,13 +512,13 @@
           <h3>Family &amp; Friends Beach Suite</h3>
           <p>Spacious suite perfect for families and groups seeking togetherness.</p>
           <div class="room-price">
-            <span class="price">₹3,000</span>
-            <span class="per">/ night (Non-AC)</span>
+            <span class="price" data-price-ac="₹3,000" data-price-nonac="₹3,000">₹3,000</span>
+            <span class="per" data-unit-ac="/ night" data-unit-nonac="/ night">/ night</span>
           </div>
           <div class="room-amenities">
-            <span><svg class="lucide">
+            <span class="ac-tag" data-ac="Non-AC" data-nonac="Non-AC"><svg class="lucide">
                 <use href="#lucide-wind"></use>
-              </svg> Non-AC</span><span><svg class="lucide">
+              </svg> <span class="ac-tag-text">Non-AC</span></span><span><svg class="lucide">
                 <use href="#lucide-wifi"></use>
               </svg> Wi-Fi</span><span><svg class="lucide">
                 <use href="#lucide-bed-double"></use>
@@ -701,6 +724,476 @@
     </div>
   </section>
 
+  <!-- ═══════════ REVIEWS ═══════════ -->
+  <section class="section reviews" id="reviews">
+    <div class="section-header reveal">
+      <span class="section-label">Guest Experiences</span>
+      <h2 class="section-title">What Our Guests Say</h2>
+      <p class="section-subtitle">Real reviews from travelers who've experienced the magic of Sunshine Beach Resort.</p>
+    </div>
+
+    <!-- Overall Rating Summary -->
+    <div class="reviews-summary reveal">
+      <div class="reviews-score">
+        <span class="reviews-score-num">4.5</span>
+        <div class="reviews-score-stars">
+          <svg class="lucide star">
+            <use href="#lucide-star"></use>
+          </svg>
+          <svg class="lucide star">
+            <use href="#lucide-star"></use>
+          </svg>
+          <svg class="lucide star">
+            <use href="#lucide-star"></use>
+          </svg>
+          <svg class="lucide star">
+            <use href="#lucide-star"></use>
+          </svg>
+          <svg class="lucide star-half">
+            <use href="#lucide-star-half"></use>
+          </svg>
+        </div>
+        <span class="reviews-score-count">90 reviews on Google</span>
+      </div>
+      <div class="reviews-bars">
+        <div class="reviews-bar-row"><span class="reviews-bar-label">5</span>
+          <div class="reviews-bar-track">
+            <div class="reviews-bar-fill" style="width: 62%;"></div>
+          </div>
+        </div>
+        <div class="reviews-bar-row"><span class="reviews-bar-label">4</span>
+          <div class="reviews-bar-track">
+            <div class="reviews-bar-fill" style="width: 20%;"></div>
+          </div>
+        </div>
+        <div class="reviews-bar-row"><span class="reviews-bar-label">3</span>
+          <div class="reviews-bar-track">
+            <div class="reviews-bar-fill" style="width: 6%;"></div>
+          </div>
+        </div>
+        <div class="reviews-bar-row"><span class="reviews-bar-label">2</span>
+          <div class="reviews-bar-track">
+            <div class="reviews-bar-fill" style="width: 4%;"></div>
+          </div>
+        </div>
+        <div class="reviews-bar-row"><span class="reviews-bar-label">1</span>
+          <div class="reviews-bar-track">
+            <div class="reviews-bar-fill" style="width: 8%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Cards Carousel -->
+    <div class="reviews-carousel reveal">
+      <div class="reviews-track" id="reviewsTrack">
+
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 200;">S</div>
+            <div class="review-meta">
+              <div class="review-name">Sanika</div>
+              <div class="review-date">2 months ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">Had a really wonderful stay at Sunshine Beach Resort. This resort is a perfect place
+            for families, friends, couples, and groups looking for a peaceful and enjoyable vacation near the beach.
+            🌴🏖️</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 320;">P</div>
+            <div class="review-meta">
+              <div class="review-name">Prachi Salunkhe</div>
+              <div class="review-date">4 months ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">The most beautiful Sunshine Resort I have ever seen, located on the beach, surrounded
+            by nature, with breathtaking views and sunsets.</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 40;">S</div>
+            <div class="review-meta">
+              <div class="review-name">Shariq Tungekar</div>
+              <div class="review-date">a year ago</div>
+            </div>
+            <div class="review-rating" data-rating="4">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star empty">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">Beach Front property. Secluded, almost private beach. Ambience is high class. U can
+            laze on a hammock listening to the waves. Food especially Sea food is delicious. Hidden Gem.</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 140;">D</div>
+            <div class="review-meta">
+              <div class="review-name">Darshana Sarfare</div>
+              <div class="review-date">a year ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">Me and my husband visited here last week. It was amazing experience. This resort is
+            best for family, couple and friends. Food was really delicious. We loved it. Service was also amazing 😍</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 260;">H</div>
+            <div class="review-meta">
+              <div class="review-name">Harpreet Singh</div>
+              <div class="review-date">a year ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">Awesome location &amp; hospitality. Food quality was awesome.</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 350;">C</div>
+            <div class="review-meta">
+              <div class="review-name">Chetan Padiyar</div>
+              <div class="review-date">5 years ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">One of the best hotel in Tondavli. It's a small resort, less crowded. Brilliant sea
+            food especially Surmai Rawa Fry. Sea is your neighbour and you relish the music of its waves.</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 7 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 100;">Y</div>
+            <div class="review-meta">
+              <div class="review-name">Yogesh Phadnis</div>
+              <div class="review-date">7 months ago</div>
+            </div>
+            <div class="review-rating" data-rating="4">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star empty">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">Very close to beach and good for family. Home made Veg &amp; Non-Veg food available.
+            Nice taste, good service, ample parking.</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 8 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 180;">P</div>
+            <div class="review-meta">
+              <div class="review-name">Pranjal Lade</div>
+              <div class="review-date">2 years ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">If you have a Malvan trip in mind, Tondavli is the place. Sunshine Beach Resort is the
+            ideal spot to spend leisure time — an isolated beach with utter peace of mind.</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 9 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 280;">U</div>
+            <div class="review-meta">
+              <div class="review-name">Udesh Yeram</div>
+              <div class="review-date">a year ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">Babu Patil is a very nice person. Excellent sea food with awesome taste. Brilliant
+            place to visit with family and friends. Not too crowded so we can enjoy peacefully.</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 10 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 60;">S</div>
+            <div class="review-meta">
+              <div class="review-name">Surendra Gorule</div>
+              <div class="review-date">2 months ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">Lovely location, stress buster, lovely food. I've been visiting for 5 to 6 years and
+            every time I enjoyed it!</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 11 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 220;">R</div>
+            <div class="review-meta">
+              <div class="review-name">Raviraj Gaikwad</div>
+              <div class="review-date">7 years ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">Awesome Resort. Totally away from any kind of rush. Clean and calm beach. Like heaven.
+            Would like to stay again and again.</p>
+          <span class="review-source">Google</span>
+        </div>
+
+        <!-- Review 12 -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar" style="--avatar-hue: 10;">C</div>
+            <div class="review-meta">
+              <div class="review-name">Chandrakant Jadhav</div>
+              <div class="review-date">a year ago</div>
+            </div>
+            <div class="review-rating" data-rating="5">
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+              <svg class="lucide star">
+                <use href="#lucide-star"></use>
+              </svg>
+            </div>
+          </div>
+          <p class="review-text">To relax and eat deliciously, this place is a must. If you're looking for a less
+            crowded place very close to the sea, this is for you. We had a lot of fun eating, staying and listening to
+            the waves 😊</p>
+          <span class="review-source">Google</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <div class="reviews-controls reveal">
+      <button class="reviews-btn reviews-btn-prev" id="reviewsPrev" aria-label="Previous reviews">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+      </button>
+      <button class="reviews-btn reviews-btn-next" id="reviewsNext" aria-label="Next reviews">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- CTA -->
+    <div class="reviews-cta reveal">
+      <a href="https://maps.app.goo.gl/f39StHTiVGMEgdhb7" target="_blank" class="reviews-write-btn">
+        <svg class="lucide">
+          <use href="#lucide-star"></use>
+        </svg>
+        Write a Review on Google
+        <svg class="lucide" style="margin-left:4px;">
+          <use href="#lucide-external-link"></use>
+        </svg>
+      </a>
+    </div>
+  </section>
+
   <!-- ═══════════ LOCATION ═══════════ -->
   <section class="section location" id="location">
     <div class="section-header reveal">
@@ -850,13 +1343,13 @@
           </div>
           <span class="c-tag tag-call">Call</span>
         </a>
-        <a class="contact-btn" href="https://wa.me/917517265059" target="_blank">
+        <a class="contact-btn" href="https://wa.me/918275316235" target="_blank">
           <div class="c-avatar wa-avatar"><svg class="lucide">
               <use href="#lucide-message-circle"></use>
             </svg></div>
           <div class="c-info">
             <div class="c-name">Babu Patil</div>
-            <div class="c-num">WhatsApp</div>
+            <div class="c-num">82753 16235 (WhatsApp)</div>
           </div>
           <span class="c-tag tag-whatsapp">Chat</span>
         </a>
@@ -866,7 +1359,17 @@
             </svg></div>
           <div class="c-info">
             <div class="c-name">Sanika Patil</div>
-            <div class="c-num">WhatsApp</div>
+            <div class="c-num">94201 95381 (WhatsApp)</div>
+          </div>
+          <span class="c-tag tag-whatsapp">Chat</span>
+        </a>
+        <a class="contact-btn" href="https://wa.me/919405624637" target="_blank">
+          <div class="c-avatar wa-avatar"><svg class="lucide">
+              <use href="#lucide-message-circle"></use>
+            </svg></div>
+          <div class="c-info">
+            <div class="c-name">Rohit Golatkar</div>
+            <div class="c-num">94056 24637 (WhatsApp)</div>
           </div>
           <span class="c-tag tag-whatsapp">Chat</span>
         </a>
